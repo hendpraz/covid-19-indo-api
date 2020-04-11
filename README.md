@@ -112,8 +112,8 @@ Our API will be based on the data we have retrieved through scraping.
 
 ## Who are behind this
 
-1. Terry Djony (@terrydjony)
-2. Farhan Rahmadi (@huntz20)
+1. Terry Djony [@terryds](https://github.com/terryds)
+2. Farhan Rahmadi [@huntz20](https://github.com/huntz20)
 
 This is open source projects, feel free to contribute by pull request!
 We're gonna list major contributors here!
