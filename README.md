@@ -26,7 +26,7 @@ Our API will be based on the data we have retrieved through scraping.
 - Serverless Offline
 
 ## Folder Structure and File Explanation
-
+```
    .
    ├── getters                 # Getter and scraper are inside this folder
    │   ├── scrapers            # Scraping logic
@@ -37,7 +37,7 @@ Our API will be based on the data we have retrieved through scraping.
    ├── libs                    # Containing some database / http helpers
    ├── resources               # Serverless AWS Resources
    └── serverless.yml          # Configuration File
-
+```
 ## API Documentation
 
 - `GET /v1`
