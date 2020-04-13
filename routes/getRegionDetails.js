@@ -12,8 +12,7 @@ export async function handler (event) {
 
     return success({
       "region_code": region_code,
-      "details": details,
-      "region_name": "Jawa Barat"
+      "details": details
     })
   }
 
