@@ -1,4 +1,4 @@
-let axios = require('axios')
+const axios = require('axios')
 const cheerio = require('cheerio')
 
 import { getDummyHTML } from './dummy_html'
@@ -23,8 +23,8 @@ export default async function () {
     const sembuh = parseInt($('div section div:nth-child(2) div:nth-child(2) div b:nth-child(2)').html().replace('.', ''))
     const meninggal = parseInt($('div section div:nth-child(3) div:nth-child(2) div b:nth-child(2)').html().replace('.', ''))
 
-    let odp = {};
-    let pdp = {};
+    const odp = {};
+    const pdp = {};
 
     odp.proses = parseInt($('div section:nth-child(2) div div:nth-child(2) div div:nth-child(1) span').html().replace('.', ''))
     odp.selesai = parseInt($('div section:nth-child(2) div div:nth-child(2) div div:nth-child(2) span').html().replace('.', ''))
