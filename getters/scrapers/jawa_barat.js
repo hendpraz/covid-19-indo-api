@@ -1,13 +1,26 @@
-// import 'cheerio' from cheerio
+const rp = require('request-promise')
+const cheerio = require('cheerio')
 
-export default async function() {
+const url = 'https://pikobar.jabarprov.go.id'
 
+const getHTML = () => 
+    new Promise(async (resolve, reject) => {
+        rp(url)
+            .then(function(html){
+                resolve(html)
+            })
+            .catch(function(err){
+                reject(err)
+            });
+    })
 
-   // Lakukan Scraping
+export default async function () {
+    const content = await getHTML();
+    const $ = cheerio.load(content)
+    const test = $.html()
 
-   // Return object seperti dibawah
-
-    return {
+    return ({
+        "test": test
         // "positif":,
         // "sembuh":,
         // "meninggal":,
@@ -23,5 +36,5 @@ export default async function() {
         //     "proses":,
         //     "selesai":,
         // },
-    }
+    })
 }
