@@ -15,28 +15,30 @@ const getHTML = () =>
             }, (error) => reject(error))
     })
 
-const getIntegerFromHTML = ($, selector) => {
-    return parseInt($(selector).html().replace('.', ''))
+const getIntFromContent = (content) => {
+    // Parse Integer from Cheerio content
+    // Example I/O: "14.000" -> 14000
+    return parseInt(content.html().replace('.', ''))
 }
 
 export default async function () {
     const content = await getDummyHTML()
     const $ = cheerio.load(content)
 
-    const positif = getIntegerFromHTML($, 'div section div div:nth-child(2) div b:nth-child(2)')
-    const sembuh = getIntegerFromHTML($, 'div section div:nth-child(2) div:nth-child(2) div b:nth-child(2)')
-    const meninggal = getIntegerFromHTML($, 'div section div:nth-child(3) div:nth-child(2) div b:nth-child(2)')
+    const positif = getIntFromContent($('div section div div:nth-child(2) div b:nth-child(2)'))
+    const sembuh = getIntFromContent($('div section div:nth-child(2) div:nth-child(2) div b:nth-child(2)'))
+    const meninggal = getIntFromContent($('div section div:nth-child(3) div:nth-child(2) div b:nth-child(2)'))
 
     const odp = {}
     const pdp = {}
 
-    odp.proses = getIntegerFromHTML($, 'div section:nth-child(2) div div:nth-child(2) div div:nth-child(1) span')
-    odp.selesai = getIntegerFromHTML($, 'div section:nth-child(2) div div:nth-child(2) div div:nth-child(2) span')
-    odp.total = getIntegerFromHTML($, 'div section:nth-child(2) div div:nth-child(2) div div:nth-child(3) span')
+    odp.proses = getIntFromContent($('div section:nth-child(2) div div:nth-child(2) div div:nth-child(1) span'))
+    odp.selesai = getIntFromContent($('div section:nth-child(2) div div:nth-child(2) div div:nth-child(2) span'))
+    odp.total = getIntFromContent($('div section:nth-child(2) div div:nth-child(2) div div:nth-child(3) span'))
 
-    pdp.proses = getIntegerFromHTML($, 'div section:nth-child(2) div:nth-child(2) div:nth-child(2) div div:nth-child(1) span')
-    pdp.selesai = getIntegerFromHTML($, 'div section:nth-child(2) div:nth-child(2) div:nth-child(2) div div:nth-child(2) span')
-    pdp.total = getIntegerFromHTML($, 'div section:nth-child(2) div:nth-child(2) div:nth-child(2) div div:nth-child(3) span')
+    pdp.proses = getIntFromContent($('div section:nth-child(2) div:nth-child(2) div:nth-child(2) div div:nth-child(1) span'))
+    pdp.selesai = getIntFromContent($('div section:nth-child(2) div:nth-child(2) div:nth-child(2) div div:nth-child(2) span'))
+    pdp.total = getIntFromContent($('div section:nth-child(2) div:nth-child(2) div:nth-child(2) div div:nth-child(3) span'))
 
     return ({
         positif,
