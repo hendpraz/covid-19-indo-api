@@ -7,8 +7,8 @@ const url = 'https://pikobar.jabarprov.go.id'
 const getCheerioContent = async (url) => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  await page.goto(url, {waitUntil: 'load'});
-  await page.waitFor(5000);
+  await page.goto(url, {waitUntil: 'load'})
+  await page.waitFor(7000)
   const htmlContent = await page.evaluate(() => {
     let result = document.querySelector('body')
     result = result.getElementsByClassName('md:m-8 flex')[0].innerHTML
@@ -17,7 +17,7 @@ const getCheerioContent = async (url) => {
 
   browser.close()
 
-  return htmlContent;
+  return htmlContent
 }
 
 const getIntFromContent = (content) => {
